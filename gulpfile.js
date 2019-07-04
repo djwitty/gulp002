@@ -4,7 +4,7 @@ global.$ = {
   gulp: require('gulp'),
   gp: require('gulp-load-plugins')(),
   browserSync: require('browser-sync').create(),
-  //mozjpeg: require('imagemin-mozjpeg'),
+  mozjpeg: require('imagemin-mozjpeg'),
 
   path: {
     tasks: require('./gulp/config/tasks.js')
@@ -16,6 +16,6 @@ $.path.tasks.forEach(taskPath => {
 });
 
 $.gulp.task('default', $.gulp.series(
-  $.gulp.parallel('pug', 'stylus', 'scripts:lib', 'scripts'),
+  $.gulp.parallel('pug', 'stylus', 'scripts:lib', 'scripts', 'img:build'),
   $.gulp.parallel('watch', 'server')
 ));
